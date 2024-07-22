@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 export default function UserTitleCard() {
   return (
     <motion.div
-      className="max-w-sm ml-64"
+      className="max-w-sm"
       drag
       dragTransition={{
         power: 0,
@@ -14,12 +14,16 @@ export default function UserTitleCard() {
     >
       <div className="flex flex-col items-start pb-10">
         <motion.img
-          initial={{ x: 100 }} // Start position (off the screen to the right)
-          animate={{ x: 0 }} // End position (center of the screen)
-          transition={{ type: "spring", bounce: 0.25, duration: 5 }}
+          initial={{ y: 0 }} // Start position
+          animate={{ y: [0, -40, 0, -30, 0, -20, 0, -10, 0, 0] }} // Bounces with decreasing height
+          transition={{
+            duration: 3, // Total duration for all bounces
+            times: [0, 0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4, 1.6], // Keyframe times
+            ease: "easeOut",
+          }} // Applying the bounce transition
           className="w-28 h-28 mb-3 rounded-full shadow-lg border"
           src="/preethamprofileimage.jpeg"
-          alt="Bonnie image"
+          alt="Profile image"
         />
         <h5 className="mb-1 text-4xl font-medium text-gray-900 dark:text-white">
           Preetham B
