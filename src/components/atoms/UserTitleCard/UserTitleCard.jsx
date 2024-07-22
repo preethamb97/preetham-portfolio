@@ -1,11 +1,22 @@
 import React from "react";
 import "./UserTitleCard.css";
+import { motion } from "framer-motion";
 
 export default function UserTitleCard() {
   return (
-    <div className="max-w-sm ml-64">
+    <motion.div
+      className="max-w-sm ml-64"
+      drag
+      dragTransition={{
+        power: 0,
+        modifyTarget: (target) => Math.round(target / 50) * 50,
+      }}
+    >
       <div className="flex flex-col items-start pb-10">
-        <img
+        <motion.img
+          initial={{ x: 100 }} // Start position (off the screen to the right)
+          animate={{ x: 0 }} // End position (center of the screen)
+          transition={{ type: "spring", bounce: 0.25, duration: 5 }}
           className="w-28 h-28 mb-3 rounded-full shadow-lg border"
           src="/preethamprofileimage.jpeg"
           alt="Bonnie image"
@@ -22,6 +33,6 @@ export default function UserTitleCard() {
           time.
         </span>
       </div>
-    </div>
+    </motion.div>
   );
 }
