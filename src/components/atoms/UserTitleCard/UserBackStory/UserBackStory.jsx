@@ -4,12 +4,7 @@ import React from "react";
 export default function UserBackStory() {
   return (
     <motion.div
-      className="text-md text-gray-500 dark:text-gray-400 text-left max-w-2xl ml-64"
-      drag
-      dragTransition={{
-        power: 0,
-        modifyTarget: (target) => Math.round(target / 50) * 50,
-      }}
+      className="text-md text-gray-500 dark:text-gray-400 text-left max-w-3xl"
     >
       <p>
         Back in 2014, my passion for computers was ignited by my fascination

@@ -1,0 +1,6 @@
+.user-job-card:hover {
+    background-color: #141e49;
+    box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.2), -3px -3px 5px rgba(255, 255, 255, 0.1);
+    transition: background-color 0.3s ease, box-shadow 0.3s ease; /* Smooth transition */
+    border-radius: 4px;
+}

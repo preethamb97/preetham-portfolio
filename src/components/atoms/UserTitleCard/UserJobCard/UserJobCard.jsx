@@ -1,9 +1,35 @@
-import React from 'react'
+import React from 'react';
+import { motion } from 'framer-motion';
 
-export default function UserJobCard() {
+const UserJobCard = ({ period, location, title, responsibilities, skills }) => {
   return (
-    <div>
-      
+    <div className="bg-[#152243] rounded-lg shadow-md p-6 transition-all duration-300 hover:bg-[#1e2a5a] hover:shadow-lg w-full max-w-4xl mt-14 relative">
+      <div className="flex">
+        <div className="w-1/5 text-gray-400">{period}</div>
+        <div className="w-4/5 text-gray-300 ml-4">
+          <div className="font-semibold">{title}</div>
+          <div>{location}</div>
+          <ul className="list-disc mt-2 ml-5">
+            {responsibilities.map((item, index) => (
+              <li key={index}>{item}</li>
+            ))}
+          </ul>
+        </div>
+      </div>
+      <div className="mt-4 flex flex-wrap">
+        {skills.map((skill, index) => (
+          <motion.div
+            key={index}
+            className="bg-[#141e49] text-white py-1 px-3 rounded-full m-1 shadow-lg"
+            whileHover={{ scale: 1.1, boxShadow: '4px 4px 10px rgba(0, 0, 0, 0.2)' }}
+            whileTap={{ scale: 0.9 }}
+          >
+            {skill}
+          </motion.div>
+        ))}
+      </div>
     </div>
-  )
-}
+  );
+};
+
+export default UserJobCard;
