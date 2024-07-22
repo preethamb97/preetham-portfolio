@@ -16,7 +16,7 @@ export default function LandingPage() {
   const openSourceRef = useRef(null);
 
   const scrollToSection = (section) => {
-    const headerOffset = 50; // Adjust this value to your header height
+    const headerOffset = 40; // Adjust this value to your header height
     const element =
       section === "about"
         ? aboutRef.current
@@ -36,8 +36,8 @@ export default function LandingPage() {
   };
 
   return (
-    <div className="flex mt-28"> {/* Added top margin */}
-      <div className="ml-36 pt-16">
+    <div className="flex mt-16"> {/* Added top margin */}
+      <div className="ml-36 pt-28">
         <UserTitleCard />
         <ProfileReferenceCard scrollToSection={scrollToSection} />
         <motion.div

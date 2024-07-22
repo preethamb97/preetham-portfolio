@@ -3,10 +3,10 @@ import { motion } from 'framer-motion';
 
 const UserJobCard = ({ period, location, title, responsibilities, skills }) => {
   return (
-    <div className="bg-[#152243] rounded-lg shadow-md p-6 transition-all duration-300 hover:bg-[#1e2a5a] hover:shadow-lg w-full max-w-4xl mt-14 relative">
-      <div className="flex">
-        <div className="w-1/5 text-gray-400">{period}</div>
-        <div className="w-4/5 text-gray-300 ml-4">
+    <div className="bg-[#152243] rounded-lg shadow-md p-6 transition-all duration-300 hover:bg-[#1e2a5a] hover:shadow-lg w-full max-w-4xl mt-14 relative mx-auto">
+      <div className="flex flex-col md:flex-row">
+        <div className="w-full md:w-1/5 text-gray-400">{period}</div>
+        <div className="w-full md:w-4/5 text-gray-300 ml-0 md:ml-4 mt-4 md:mt-0">
           <div className="font-semibold">{title}</div>
           <div>{location}</div>
           <ul className="list-disc mt-2 ml-5">

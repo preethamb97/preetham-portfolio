@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 
 const PersonalProjectCard = ({ title, description, skills, githubLink }) => {
   return (
-    <div className="bg-[#152243] rounded-lg shadow-md p-6 transition-all duration-300 hover:bg-[#1e2a5a] hover:shadow-lg w-full max-w-4xl mt-14 relative">
+    <div className="bg-[#152243] rounded-lg shadow-md p-6 transition-all duration-300 hover:bg-[#1e2a5a] hover:shadow-lg w-full max-w-4xl mt-14 relative mx-auto">
       <div className="text-gray-300">
         <div className="font-semibold text-xl">{title}</div>
         <p className="mt-2">{description}</p>

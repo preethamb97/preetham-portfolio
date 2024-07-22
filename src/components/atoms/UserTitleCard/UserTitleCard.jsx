@@ -1,11 +1,11 @@
 import React from "react";
-import "./UserTitleCard.css";
 import { motion } from "framer-motion";
+import "./UserTitleCard.css";
 
 export default function UserTitleCard() {
   return (
     <motion.div
-      className="max-w-sm"
+      className="max-w-sm mx-auto sm:max-w-md lg:max-w-lg"
       drag
       dragTransition={{
         power: 0,
@@ -25,13 +25,13 @@ export default function UserTitleCard() {
           src="/preethamprofileimage.jpeg"
           alt="Profile image"
         />
-        <h5 className="mb-1 text-4xl font-medium text-gray-900 dark:text-white">
+        <h5 className="mb-1 text-2xl sm:text-3xl lg:text-4xl font-medium text-gray-900 dark:text-white">
           Preetham B
         </h5>
         <span className="text-md text-gray-500 dark:text-gray-400">
           Senior Frontend Engineer | Bangalore, IN
         </span>
-        <span className="text-sm text-gray-500 dark:text-gray-400">
+        <span className="text-sm text-gray-500 dark:text-gray-400 mt-2">
           I develop scalable, efficient software solutions and dynamic
           micro-frontends, enhancing system performance and reducing integration
           time.

@@ -10,7 +10,7 @@ const ProfileReferenceCard = ({ scrollToSection }) => {
 
   return (
     <motion.div
-      className="flex flex-col items-start space-y-4 mt-8"
+      className="flex flex-col items-start space-y-4 mt-8 sm:mt-12 lg:mt-16"
       drag
       dragTransition={{
         power: 0,
@@ -24,7 +24,7 @@ const ProfileReferenceCard = ({ scrollToSection }) => {
           onClick={() => scrollToSection(section.ref)}
           whileHover={{ scale: 1.1 }}
         >
-          <span className="text-lg">{section.name}</span>
+          <span className="text-lg sm:text-xl lg:text-2xl">{section.name}</span>
           <motion.div
             className="ml-2 h-[2px] bg-[#152243] transition-all duration-300"
             whileHover={{ width: "100px" }}
