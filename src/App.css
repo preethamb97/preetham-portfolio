@@ -1,1 +1,66 @@
+body {
+  background-color: #121F42; /* dark mode background */
+  color: #a0aec0; /* dark mode text color */
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
 
+.text-md {
+  font-size: 1rem;
+}
+
+.text-gray-500 {
+  color: #6b7280;
+}
+
+.dark\:text-gray-400 {
+  color: #cbd5e0;
+}
+
+.text-left {
+  text-align: left;
+}
+
+.p-6 {
+  padding: 1.5rem;
+}
+
+.relative {
+  position: relative;
+}
+
+.fixed {
+  position: fixed;
+}
+
+.top-0 {
+  top: 0;
+}
+
+.left-0 {
+  left: 0;
+}
+
+.w-full {
+  width: 100%;
+}
+
+.h-full {
+  height: 100%;
+}
+
+.pointer-events-none {
+  pointer-events: none;
+}
+
+#cursor-effect {
+  position: fixed;
+  width: 600px;
+  height: 600px;
+  pointer-events: none;
+  transition: all 0.1s ease;
+  mix-blend-mode: overlay;
+  border-radius: 50%;
+  /* opacity: 0.03; */
+}
