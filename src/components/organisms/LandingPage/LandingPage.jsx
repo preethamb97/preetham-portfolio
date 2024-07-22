@@ -11,7 +11,7 @@ export default function LandingPage() {
     <div className="flex mt-32">
       <UserTitleCard />
       <motion.div
-        className="ml-64 h-screen overflow-y-auto custom-scroll mb-32"
+        className="ml-64 h-screen overflow-y-auto custom-scroll"
         initial={{ opacity: 0, y: 50 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1 }}
