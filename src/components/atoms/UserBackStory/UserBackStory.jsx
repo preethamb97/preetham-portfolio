@@ -3,7 +3,7 @@ import React from "react";
 
 export default function UserBackStory() {
   return (
-    <motion.div className="text-md text-gray-500 dark:text-gray-400 text-left max-w-3xl mx-auto p-4 sm:p-6 lg:p-8">
+    <motion.div className="text-md text-gray-400 text-left max-w-3xl mx-auto p-4 sm:p-6 lg:p-8 hover-text">
       <p>
         Back in 2014, my passion for computers was ignited by my fascination
         with their ability to solve complex problems and create remarkable

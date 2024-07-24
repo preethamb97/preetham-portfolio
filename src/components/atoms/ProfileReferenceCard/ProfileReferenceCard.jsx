@@ -11,11 +11,11 @@ const ProfileReferenceCard = ({ scrollToSection }) => {
   return (
     <motion.div
       className="flex flex-col items-start space-y-4 mt-8 sm:mt-12 lg:mt-16"
-      drag
-      dragTransition={{
-        power: 0,
-        modifyTarget: (target) => Math.round(target / 50) * 50,
-      }}
+      // drag
+      // dragTransition={{
+      //   power: 0,
+      //   modifyTarget: (target) => Math.round(target / 50) * 50,
+      // }}
     >
       {sections.map((section, index) => (
         <motion.div
