@@ -24,7 +24,6 @@ export default function LandingPage() {
             Math.pow(event.clientY - (rect.top + rect.height / 2), 2)
         );
         if (distance < 250) {
-          // 500px diameter
           element.classList.add("text-white");
         } else {
           element.classList.remove("text-white");
@@ -39,35 +38,15 @@ export default function LandingPage() {
     };
   }, []);
 
-  const scrollToSection = (section) => {
-    const headerOffset = 40; // Adjust this value to your header height
-    const element =
-      section === "about"
-        ? aboutRef.current
-        : section === "experience"
-        ? experienceRef.current
-        : openSourceRef.current;
-
-    if (element) {
-      const elementPosition = element.getBoundingClientRect().top;
-      const offsetPosition = elementPosition + window.scrollY - headerOffset;
-
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: "smooth",
-      });
-    }
-  };
-
   return (
-    <div className="flex mt-16 gap-8">
-      <div className="w-full  pt-14 overflow-y-auto custom-scroll pb-64">
+    <div className="flex flex-col lg:flex-row mt-16 gap-8 h-screen overflow-y-auto lg:overflow-hidden hide-scrollbar sm:h-max pb-60">
+      <div className="w-full lg:w-1/2 pt-14 lg:pb-64 md: pb:64 sm:pb-8 lg:overflow-y-auto">
         <UserTitleCard />
         <UserOtherProfileCards />
       </div>
 
       <motion.div
-        className="w-full h-screen overflow-y-auto custom-scroll pb-64"
+        className="w-full lg:w-1/2 lg:h-screen overflow-y-auto pb-64 hide-scrollbar"
         initial={{ opacity: 0, y: 50 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1 }}
@@ -75,7 +54,7 @@ export default function LandingPage() {
         <div ref={aboutRef} className="pt-6 hover-text">
           <UserBackStory />
         </div>
-        <div ref={experienceRef} className="pt-16 hover-text pl-12">
+        <div ref={experienceRef} className="pt-16 hover-text pl-0 lg:pl-12">
           {jobDetails.map((job, index) => (
             <UserJobCard
               key={index}
