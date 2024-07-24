@@ -16,25 +16,26 @@ export default function LandingPage() {
 
   useEffect(() => {
     const handleMouseMove = (event) => {
-      const elements = document.querySelectorAll('.hover-text');
+      const elements = document.querySelectorAll(".hover-text");
       elements.forEach((element) => {
         const rect = element.getBoundingClientRect();
         const distance = Math.sqrt(
           Math.pow(event.clientX - (rect.left + rect.width / 2), 2) +
-          Math.pow(event.clientY - (rect.top + rect.height / 2), 2)
+            Math.pow(event.clientY - (rect.top + rect.height / 2), 2)
         );
-        if (distance < 250) { // 500px diameter
-          element.classList.add('text-white');
+        if (distance < 250) {
+          // 500px diameter
+          element.classList.add("text-white");
         } else {
-          element.classList.remove('text-white');
+          element.classList.remove("text-white");
         }
       });
     };
 
-    window.addEventListener('mousemove', handleMouseMove);
+    window.addEventListener("mousemove", handleMouseMove);
 
     return () => {
-      window.removeEventListener('mousemove', handleMouseMove);
+      window.removeEventListener("mousemove", handleMouseMove);
     };
   }, []);
 
@@ -62,9 +63,7 @@ export default function LandingPage() {
     <div className="flex mt-16 gap-8">
       <div className="w-full  pt-14 overflow-y-auto custom-scroll pb-64">
         <UserTitleCard />
-        <div className="ml-72 mt-72 hover-text">
-          <UserOtherProfileCards />
-        </div>
+        <UserOtherProfileCards />
       </div>
 
       <motion.div

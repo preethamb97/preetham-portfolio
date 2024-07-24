@@ -5,7 +5,7 @@ import "./UserTitleCard.css";
 export default function UserTitleCard() {
   return (
     <motion.div
-      className="max-w-sm mx-auto sm:max-w-md lg:max-w-lg"
+      className="max-w-sm sm:max-w-md lg:max-w-lg ml-20"
       // drag
       // dragTransition={{
       //   power: 0,

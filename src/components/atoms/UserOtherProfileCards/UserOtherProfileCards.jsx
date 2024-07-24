@@ -39,7 +39,7 @@ const profileLinks = [
 
 const UserOtherProfileCards = () => {
   return (
-    <div className="flex flex-wrap justify-center mt-8 sm:mt-12 lg:mt-16 max-w-lg">
+    <div className="flex flex-wrap justify-center mt-8 sm:mt-12 lg:mt-16 max-w-lg ">
       {profileLinks.map((link, index) => (
         <motion.a
           key={index}
