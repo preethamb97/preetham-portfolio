@@ -40,6 +40,7 @@ const jobDetails = [
       "Webpack",
       "Redis",
       "Git",
+      "System Design",
     ],
   },
   {
@@ -58,6 +59,7 @@ const jobDetails = [
       "Typescript",
       "AWS",
       "Git",
+      "System Design",
     ],
   },
   {
@@ -90,6 +92,7 @@ const jobDetails = [
       "Mongoose",
       "Nginx",
       "Apache2",
+      "System Design",
     ],
   },
 ];
