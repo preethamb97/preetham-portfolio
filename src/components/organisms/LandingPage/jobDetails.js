@@ -11,8 +11,9 @@ const jobDetails = [
       "Optimized data management with React and Redux, reducing data save time by 90%.",
       "Employed Test-Driven Development (TDD) with Jest and RTL, enhancing code reliability and reducing errors.",
       "Developed a LoopBack 4 API middleware extension to integrate custom logic, handling domain-specific tasks (e.g., hospitality, airlines) before core API transactions. Delivered 300% of the expected outcome, enhancing flexibility without altering core functions.",
+      "Worked on user and organization-level RBAC (Role-Based Access Control) implementation, ensuring robust access management.",
+      "Implemented configuration-based UI, hiding or showing tabs, widgets based on organization config, enhancing user experience and customization.",
       "Received multiple spot awards for accountability and excellence in task execution.",
-      "Won the Capillary Aira Forgemasters Hackathon 2024.",
     ],
     skills: [
       "React",

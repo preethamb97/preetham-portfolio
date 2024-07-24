@@ -22,7 +22,7 @@ function App() {
     <div className="relative">
       <div
         id="cursor-effect"
-        className="pointer-events-none fixed rounded-full w-52 h-52 md:w-32 md:h-32 sm:w-24 sm:h-24"
+        className="pointer-events-none fixed rounded-full w-52 h-52 sm:w-24 sm:h-24"
         style={{ 
           background: 'radial-gradient(circle, rgba(18, 31, 66, 0.03) 0%, rgba(18, 31, 66, 0) 100%)',
           transition: 'all 0.1s ease'

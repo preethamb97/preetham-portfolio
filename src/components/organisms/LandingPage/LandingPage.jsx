@@ -60,15 +60,15 @@ export default function LandingPage() {
 
   return (
     <div className="flex mt-16 gap-8">
-      <div className="w-full md:w-1/3 pt-14 overflow-y-auto custom-scroll pb-64">
+      <div className="w-full  pt-14 overflow-y-auto custom-scroll pb-64">
         <UserTitleCard />
-        <div className="ml-0 md:ml-20 mt-72 hover-text">
+        <div className="ml-72 mt-72 hover-text">
           <UserOtherProfileCards />
         </div>
       </div>
 
       <motion.div
-        className="w-full md:w-2/3 h-screen overflow-y-auto custom-scroll pb-64"
+        className="w-full h-screen overflow-y-auto custom-scroll pb-64"
         initial={{ opacity: 0, y: 50 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1 }}
@@ -76,7 +76,7 @@ export default function LandingPage() {
         <div ref={aboutRef} className="pt-6 hover-text">
           <UserBackStory />
         </div>
-        <div ref={experienceRef} className="pt-16 hover-text">
+        <div ref={experienceRef} className="pt-16 hover-text pl-12">
           {jobDetails.map((job, index) => (
             <UserJobCard
               key={index}
