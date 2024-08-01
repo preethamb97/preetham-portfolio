@@ -22,7 +22,7 @@ export default function UserTitleCard() {
             ease: "easeOut",
           }} // Applying the bounce transition
           className="w-28 h-28 mb-3 rounded-full shadow-lg border"
-          src="/preethamprofileimage.jpeg"
+          src="/preetham-portfolio/preethamprofileimage.jpeg"
           alt="Profile image"
         />
         <h5 className="mb-1 text-2xl sm:text-3xl lg:text-4xl font-medium text-gray-900 dark:text-white hover-text">
