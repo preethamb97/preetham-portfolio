@@ -1,43 +1,36 @@
-# Simple workflow for deploying static content to GitHub Pages
-name: Deploy static content to Pages
+# Workflow to deploy static content to the gh-pages branch
+name: Deploy static content to gh-pages
 
 on:
-  # Runs on pushes targeting the default branch
+  # Trigger on pushes to the default branch
   push:
     branches: ["master"]
 
-  # Allows you to run this workflow manually from the Actions tab
+  # Allows the workflow to be run manually
   workflow_dispatch:
 
-# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
 permissions:
-  contents: read
-  pages: write
-  id-token: write
-
-# Allow only one concurrent deployment
-concurrency:
-  group: "pages"
-  cancel-in-progress: false
+  contents: write
 
 jobs:
   deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
+
     steps:
+      # Check out the repository
       - name: Checkout Repository
         uses: actions/checkout@v4
 
-      - name: Setup Pages
-        uses: actions/configure-pages@v5
+      # Install dependencies and build (if required)
+      - name: Install Dependencies and Build
+        run: |
+          npm ci
+          npm run build # Replace this with your project's build command, if needed
 
-      - name: Upload dist folder as artifact
-        uses: actions/upload-pages-artifact@v3
+      # Deploy the dist folder to gh-pages branch
+      - name: Deploy to gh-pages
+        uses: peaceiris/actions-gh-pages@v3
         with:
-          path: 'dist' # Specify the dist folder here
-
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: dist # Path to the folder to deploy
+          publish_branch: gh-pages # Target branch for deployment
