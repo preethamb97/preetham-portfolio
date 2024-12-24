@@ -1,36 +1,33 @@
-# Workflow to deploy static content to the gh-pages branch
-name: Deploy static content to gh-pages
+# Workflow to build and deploy to the root of gh-pages branch
+name: Build and Deploy to gh-pages
 
 on:
-  # Trigger on pushes to the default branch
+  # Trigger on pushes to the master branch
   push:
     branches: ["master"]
-
-  # Allows the workflow to be run manually
-  workflow_dispatch:
 
 permissions:
   contents: write
 
 jobs:
-  deploy:
+  build-and-deploy:
     runs-on: ubuntu-latest
 
     steps:
-      # Check out the repository
+      # Step 1: Check out the repository
       - name: Checkout Repository
         uses: actions/checkout@v4
 
-      # Install dependencies and build (if required)
+      # Step 2: Install dependencies and build the project
       - name: Install Dependencies and Build
         run: |
           npm ci
-          npm run build # Replace this with your project's build command, if needed
+          npm run build
 
-      # Deploy the dist folder to gh-pages branch
+      # Step 3: Deploy the contents of the dist folder to the gh-pages branch
       - name: Deploy to gh-pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: dist # Path to the folder to deploy
+          publish_dir: dist # The dist folder is uploaded to the root of gh-pages
           publish_branch: gh-pages # Target branch for deployment
