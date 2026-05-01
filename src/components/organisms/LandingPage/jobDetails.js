@@ -4,7 +4,7 @@ const jobDetails = [
     location: "Bengaluru, IN",
     title: "Senior Engineering Lead – Frontend, Persistent Systems",
     responsibilities: [
-      "Led frontend development using React.js, Next.js, React-Query, TailwindCSS, React Hook Form, and TypeScript.",
+      "Led frontend development using React, Next.js, TanStack Query, Tailwind CSS, React Hook Form, and TypeScript.",
       "Collaborated with cross-functional teams to design and implement scalable solutions on AWS Cloud.",
       "Enhanced user experiences and optimized application performance while maintaining high code quality.",
       "Implemented a chatbot UI for the LOR project, enabling seamless task execution and answers for users.",
@@ -13,8 +13,8 @@ const jobDetails = [
     skills: [
       "React.js",
       "Next.js",
-      "React-Query",
-      "TailwindCSS",
+      "TanStack Query",
+      "Tailwind CSS",
       "React Hook Form",
       "TypeScript",
       "AWS",

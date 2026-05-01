@@ -1,0 +1,45 @@
+/**
+ * Theme tokens — semantic surfaces + typography ramps swap via `html.dark`.
+ * Light: darker inks on cool-gray canvas for readable hierarchy.
+ * Dark: off-white primary, lifted muted/subtle for charcoal surfaces (not pure #fff on #000).
+ */
+
+:root {
+  color-scheme: light;
+  --color-canvas: #f7f8fa;
+  --color-surface-1: #eef1f6;
+  --color-surface-2: #e3e7ef;
+  --color-surface-3: #d6dce8;
+  --color-hairline: rgba(17, 24, 39, 0.09);
+  --color-hairline-soft: rgba(17, 24, 39, 0.05);
+  /* Primary copy / headings */
+  --color-ink: #111827;
+  /* Body paragraphs, nav secondary */
+  --color-ink-muted: #374151;
+  /* Captions, URLs, timestamps — still ≥4.5:1 on canvas & surface-1 */
+  --color-ink-subtle: #5f6b7a;
+  /* Uppercase eyebrows / column titles */
+  --color-ink-eyebrow: #4b5563;
+  --color-accent-blue: #0b63ce;
+  --color-semantic-visited: #5b21b6;
+  --color-inverse-canvas: #111827;
+  --color-inverse-ink: #ffffff;
+}
+
+html.dark {
+  color-scheme: dark;
+  --color-canvas: #09090b;
+  --color-surface-1: #14161c;
+  --color-surface-2: #1b1e26;
+  --color-surface-3: #252932;
+  --color-hairline: rgba(228, 231, 237, 0.11);
+  --color-hairline-soft: rgba(228, 231, 237, 0.055);
+  --color-ink: #f4f4f5;
+  --color-ink-muted: #c7cbd4;
+  --color-ink-subtle: #9ca3af;
+  --color-ink-eyebrow: #a8adb8;
+  --color-accent-blue: #3dabff;
+  --color-semantic-visited: #c9b6ff;
+  --color-inverse-canvas: #fafafa;
+  --color-inverse-ink: #09090b;
+}

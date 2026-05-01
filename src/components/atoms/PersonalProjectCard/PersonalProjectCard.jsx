@@ -1,34 +1,50 @@
-import React from 'react';
-import { motion } from 'framer-motion';
+import React from "react";
+import { motion } from "framer-motion";
 
-const PersonalProjectCard = ({ title, description, skills, githubLink }) => {
+const PersonalProjectCard = ({
+  title,
+  description,
+  skills,
+  githubLink,
+  index,
+}) => {
   return (
-    <div className="bg-[#152243] rounded-lg shadow-md p-6 transition-all duration-300 hover:bg-[#1e2a5a] hover:shadow-lg w-full max-w-4xl mt-14 relative mx-auto">
-      <div className="text-gray-300">
-        <div className="font-semibold text-xl">{title}</div>
-        <p className="mt-2">{description}</p>
-        <a
-          href={githubLink}
-          className="text-blue-400 underline mt-2 block"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          View on GitHub
-        </a>
-      </div>
-      <div className="mt-4 flex flex-wrap">
-        {skills.map((skill, index) => (
-          <motion.div
-            key={index}
-            className="bg-[#141e49] text-white py-1 px-3 rounded-full m-1 shadow-lg"
-            whileHover={{ scale: 1.1, boxShadow: '4px 4px 10px rgba(0, 0, 0, 0.2)' }}
-            whileTap={{ scale: 0.9 }}
+    <motion.article
+      initial={{ opacity: 0, y: 22 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-48px", amount: 0.12 }}
+      transition={{
+        type: "spring",
+        stiffness: 340,
+        damping: 30,
+        mass: 0.85,
+        delay: index * 0.07,
+      }}
+      className="flex h-full flex-col rounded-hc-lg border border-hairline bg-surface-1 p-5 sm:p-6 md:p-8"
+    >
+      <h3 className="font-display text-card-title text-ink">{title}</h3>
+      <p className="mt-3 flex-1 text-[0.9375rem] font-medium leading-[1.71] text-ink-muted sm:mt-4 sm:text-body-sm">
+        {description}
+      </p>
+      <a
+        href={githubLink}
+        className="mt-5 inline-flex min-h-[44px] items-center text-body-sm font-semibold text-accent-blue hover:underline visited:text-semantic-visited focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-blue sm:mt-6"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        View repository
+      </a>
+      <div className="mt-5 flex flex-wrap gap-2 sm:mt-6">
+        {skills.map((skill, i) => (
+          <span
+            key={i}
+            className="rounded-hc-sm border border-hairline bg-surface-2 px-2.5 py-1.5 font-display text-[0.8125rem] font-medium text-ink-muted sm:px-3 sm:text-body-sm"
           >
             {skill}
-          </motion.div>
+          </span>
         ))}
       </div>
-    </div>
+    </motion.article>
   );
 };
 

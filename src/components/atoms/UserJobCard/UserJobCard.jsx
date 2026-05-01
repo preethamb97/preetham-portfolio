@@ -1,34 +1,50 @@
-import React from 'react';
-import { motion } from 'framer-motion';
+import React from "react";
+import { motion } from "framer-motion";
 
-const UserJobCard = ({ period, location, title, responsibilities, skills }) => {
+const UserJobCard = ({
+  period,
+  location,
+  title,
+  responsibilities,
+  skills,
+  variants,
+  dotVariants,
+}) => {
   return (
-    <div className="bg-[#152243] rounded-lg shadow-md p-6 transition-all duration-300 hover:bg-[#1e2a5a] hover:shadow-lg w-full max-w-4xl mt-14 relative mx-auto">
-      <div className="flex flex-col">
-        <div className="w-full  text-gray-400">{period}</div>
-        <div className="w-full  text-gray-300 ml-0  mt-4 ">
-          <div className="font-semibold">{title}</div>
-          <div>{location}</div>
-          <ul className="list-disc mt-2 ml-5">
-            {responsibilities.map((item, index) => (
-              <li key={index}>{item}</li>
-            ))}
-          </ul>
+    <motion.article
+      variants={variants}
+      className="relative pb-16 pl-7 last:pb-0 sm:pl-8 md:pb-24 md:pl-12 lg:pb-[6rem]"
+    >
+      <motion.span
+        variants={dotVariants}
+        className="absolute left-0 top-8 z-[1] h-2.5 w-2.5 -translate-x-1/2 rounded-full bg-accent-blue ring-[5px] ring-canvas sm:h-[10px] sm:w-[10px] sm:top-10 sm:ring-[6px]"
+        aria-hidden
+      />
+      <div className="rounded-hc-lg border border-hairline bg-surface-1 p-5 sm:p-6 md:p-8">
+        <p className="font-display text-caption font-medium text-ink-muted">{period}</p>
+        <h3 className="font-display mt-3 text-[clamp(1.125rem,2.8vw,1.75rem)] font-semibold leading-[1.21] tracking-[-0.025em] text-ink sm:mt-4">
+          {title}
+        </h3>
+        <p className="mt-2 text-body font-medium text-ink-muted">{location}</p>
+        <ul className="mt-4 list-disc space-y-2 pl-4 text-[0.9375rem] font-medium leading-relaxed text-ink-muted marker:text-ink-subtle sm:mt-5 sm:pl-5 sm:text-body">
+          {responsibilities.map((item, i) => (
+            <li key={i} className="pl-0.5 sm:pl-1">
+              {item}
+            </li>
+          ))}
+        </ul>
+        <div className="mt-5 flex flex-wrap gap-2 sm:mt-6">
+          {skills.map((skill, i) => (
+            <span
+              key={i}
+              className="rounded-hc-sm border border-hairline bg-surface-2 px-2.5 py-1.5 font-display text-[0.8125rem] font-medium text-ink-muted sm:px-3 sm:text-body-sm"
+            >
+              {skill}
+            </span>
+          ))}
         </div>
       </div>
-      <div className="mt-4 flex flex-wrap">
-        {skills.map((skill, index) => (
-          <motion.div
-            key={index}
-            className="bg-[#141e49] text-white py-1 px-3 rounded-full m-1 shadow-lg"
-            whileHover={{ scale: 1.1, boxShadow: '4px 4px 10px rgba(0, 0, 0, 0.2)' }}
-            whileTap={{ scale: 0.9 }}
-          >
-            {skill}
-          </motion.div>
-        ))}
-      </div>
-    </div>
+    </motion.article>
   );
 };
 

@@ -1,47 +1,47 @@
 import { motion } from "framer-motion";
 import React from "react";
 
+const block = {
+  initial: { opacity: 0, y: 16 },
+  whileInView: { opacity: 1, y: 0 },
+  viewport: { once: true, margin: "-56px", amount: 0.12 },
+  transition: { duration: 0.48, ease: [0.22, 1, 0.36, 1] },
+};
+
 export default function UserBackStory() {
   return (
-    <motion.div className="text-md text-gray-400 text-left max-w-4xl mx-auto p-4 sm:p-6 lg:p-8 hover-text">
-      <p>
-        Back in 2014, my passion for computers was ignited by my fascination
-        with their ability to solve complex problems and create remarkable
-        experiences. This curiosity led me to pursue a BE in Computer Science
-        from SDIT in Mangalore, where I embarked on my journey into the world of
-        software development.
-      </p>
-      <br />
-      <p>
-        Over the years, I have evolved by working on a diverse range of
-        projects. My career began in game development at Juego Studios, where I
-        designed and developed scalable server applications for multiplayer
-        games and real-time applications. Notable projects included creating
-        NodeJS-based games like Kalutai and Earth Arena, as well as implementing
-        a serverless poker engine. This experience provided me with a deep
-        understanding of game logic and real-time data handling.
-      </p>
-      <br />
-      <p>
-        Transitioning into web development, I joined Capillary Technologies,
-        where I have been instrumental in improving development efficiency and
-        implementing dynamic micro-frontends using React. My role also involves
-        optimizing system performance and mentoring team members to ensure
-        high-quality project delivery. Additionally, I have worked on numerous
-        Proof of Concepts (POCs) and conducted extensive research and
-        development (R&D) to explore innovative solutions and stay ahead of
-        technological advancements.
-      </p>
-      <br />
-      <p>
-        Beyond my professional work, I have a strong interest in open-source
-        contributions and competitive programming. These activities allow me to
-        continuously refine my coding skills and stay updated with the latest
-        technologies. Outside of the tech world, I enjoy playing football,
-        engaging in competitive programming, playing CS:GO, and traveling to
-        explore new places and cultures. I also cherish spending time with my
-        family.
-      </p>
-    </motion.div>
+    <div className="page-gutter">
+      <motion.p className="text-[0.9375rem] font-medium leading-[1.62] text-ink-muted sm:text-body" {...block}>
+        I started building software in earnest around 2014—curious about how solid systems support
+        great user experiences—and earned a bachelor&apos;s degree in Computer Science from SDIT,
+        Mangalore.
+      </motion.p>
+      <motion.p
+        className="mt-6 text-[0.9375rem] font-medium leading-[1.62] text-ink-muted sm:mt-8 sm:text-body"
+        {...block}
+        transition={{ ...block.transition, delay: 0.05 }}
+      >
+        My career began in game technology at Juego Studios: multiplayer backends, real-time data, and
+        resilient Node.js services, including serverless game logic on titles such as Kalutai and Earth
+        Arena.
+      </motion.p>
+      <motion.p
+        className="mt-6 text-[0.9375rem] font-medium leading-[1.62] text-ink-muted sm:mt-8 sm:text-body"
+        {...block}
+        transition={{ ...block.transition, delay: 0.1 }}
+      >
+        Today I focus on web platforms—leading frontend delivery at Persistent Systems with React,
+        Next.js, TypeScript, and AWS—and previously scaling micro-frontends and mentoring engineers at
+        Capillary Technologies.
+      </motion.p>
+      <motion.p
+        className="mt-6 text-[0.9375rem] font-medium leading-[1.62] text-ink-subtle sm:mt-8 sm:text-body"
+        {...block}
+        transition={{ ...block.transition, delay: 0.15 }}
+      >
+        Outside of work I contribute to open source when I can, practice competitive programming, and
+        unwind with football, CS:GO, and travel.
+      </motion.p>
+    </div>
   );
 }
