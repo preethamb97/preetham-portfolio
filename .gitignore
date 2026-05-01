@@ -99,6 +99,9 @@ out
 # vuepress build output
 .vuepress/dist
 
+# Vite build output (CI builds for GitHub Pages)
+dist
+
 # vuepress v2.x temp and cache directory
 .temp
 .cache
