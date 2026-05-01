@@ -298,8 +298,8 @@ export default function LandingPage() {
                 About this site
               </p>
               <p className="mt-4 font-display text-body-sm font-medium leading-[1.71] text-ink-muted sm:mt-5">
-                Senior frontend engineer in Bengaluru. I collaborate with product and platform teams to
-                ship resilient interfaces, tighten delivery, and mentor engineers taking their first apps
+                Senior full-stack engineer in Bengaluru. I collaborate with product and platform teams to
+                ship resilient web products, tighten delivery, and mentor engineers taking their first apps
                 to production.
               </p>
             </div>

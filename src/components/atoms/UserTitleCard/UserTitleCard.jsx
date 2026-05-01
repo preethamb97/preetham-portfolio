@@ -27,7 +27,7 @@ export default function UserTitleCard() {
   return (
     <div className="page-gutter flex w-full flex-col items-center text-center">
       <motion.div {...fadeUp}>
-        <Eyebrow className="mb-5 sm:mb-6">Portfolio · Frontend engineering</Eyebrow>
+        <Eyebrow className="mb-5 sm:mb-6">Portfolio · Full-stack engineering</Eyebrow>
       </motion.div>
       <motion.div {...fadeUp} transition={{ ...fadeUp.transition, delay: 0.04 }}>
         <div className="relative mx-auto mb-7 w-fit sm:mb-8">
@@ -63,7 +63,7 @@ export default function UserTitleCard() {
         {...fadeUp}
         transition={{ ...fadeUp.transition, delay: 0.12 }}
       >
-        Senior frontend engineer · Bengaluru, India
+        Senior full-stack engineer · Bengaluru, India
       </motion.p>
       <motion.div
         className="mt-5 flex flex-wrap items-center justify-center gap-2 px-2 sm:mt-6"

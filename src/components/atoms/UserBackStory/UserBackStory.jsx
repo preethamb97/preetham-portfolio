@@ -30,7 +30,7 @@ export default function UserBackStory() {
         {...block}
         transition={{ ...block.transition, delay: 0.1 }}
       >
-        Today I focus on web platforms—leading frontend delivery at Persistent Systems with React,
+        Today I focus on web platforms—leading full-stack delivery at Persistent Systems with React,
         Next.js, TypeScript, and AWS—and previously scaling micro-frontends and mentoring engineers at
         Capillary Technologies.
       </motion.p>

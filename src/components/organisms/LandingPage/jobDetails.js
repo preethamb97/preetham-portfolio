@@ -2,9 +2,9 @@ const jobDetails = [
   {
     period: "September 2024 - Present",
     location: "Bengaluru, IN",
-    title: "Senior Engineering Lead – Frontend, Persistent Systems",
+    title: "Senior Engineering Lead – Full-stack, Persistent Systems",
     responsibilities: [
-      "Led frontend development using React, Next.js, TanStack Query, Tailwind CSS, React Hook Form, and TypeScript.",
+      "Led full-stack development using React, Next.js, TanStack Query, Tailwind CSS, React Hook Form, and TypeScript.",
       "Collaborated with cross-functional teams to design and implement scalable solutions on AWS Cloud.",
       "Enhanced user experiences and optimized application performance while maintaining high code quality.",
       "Implemented a chatbot UI for the LOR project, enabling seamless task execution and answers for users.",
@@ -49,10 +49,10 @@ const jobDetails = [
   {
     period: "September 2021 - August 2022",
     location: "Bengaluru, IN",
-    title: "Software Engineer – Frontend, Codecraft Technologies",
+    title: "Software Engineer – Full-stack, Codecraft Technologies",
     responsibilities: [
       "Developed backend architecture for ECG reports using NestJS and MongoDB.",
-      "Implemented frontend UI using ReactJS with TDD practices.",
+      "Implemented the web UI using ReactJS with TDD practices.",
       "Created scalable APIs and mentored team members on performance optimization.",
       "Improved user satisfaction scores by 35% through caching strategy optimization.",
     ],
@@ -68,7 +68,7 @@ const jobDetails = [
   {
     period: "July 2019 - September 2021",
     location: "Bengaluru, IN",
-    title: "Software Engineer – Frontend, Juego Studios",
+    title: "Software Engineer, Juego Studios",
     responsibilities: [
       "Designed scalable server applications for multiplayer games, chat, and real-time apps.",
       "Developed real-time and turn-based gaming applications using Node.js and PHP.",
