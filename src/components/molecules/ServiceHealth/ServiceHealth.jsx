@@ -4,9 +4,56 @@ import Eyebrow from "../../atoms/Eyebrow/Eyebrow";
 
 const HEALTH_TIMEOUT_MS = 12000;
 
+const HEALTH_GATEWAY = import.meta.env.VITE_HEALTH_GATEWAY?.trim() || "";
+
+function probeUrl(check) {
+  if (HEALTH_GATEWAY) {
+    const base = HEALTH_GATEWAY.replace(/\/?$/, "");
+    return `${base}?target=${encodeURIComponent(check.url)}`;
+  }
+  if (import.meta.env.DEV) {
+    return `${import.meta.env.BASE_URL}__health/${check.id}`;
+  }
+  return check.url;
+}
+
+function summarizeHealthBody(bodyText) {
+  if (!bodyText?.trim()) return null;
+  const trimmed = bodyText.trim().slice(0, 4096);
+  try {
+    const j = JSON.parse(trimmed);
+    if (typeof j !== "object" || j === null) return String(j);
+    const keys = [
+      "status",
+      "state",
+      "healthy",
+      "ok",
+      "success",
+      "message",
+      "uptime",
+      "version",
+      "service",
+      "timestamp",
+    ];
+    const parts = [];
+    for (const k of keys) {
+      if (!(k in j)) continue;
+      const v = j[k];
+      if (v === null || v === undefined || v === "") continue;
+      parts.push(`${k}: ${typeof v === "object" ? JSON.stringify(v) : String(v)}`);
+    }
+    if (parts.length) return parts.slice(0, 6).join(" · ");
+    const json = JSON.stringify(j);
+    return json.length <= 220 ? json : `${json.slice(0, 220)}…`;
+  } catch {
+    return null;
+  }
+}
+
 function statusLabel(entry) {
   if (entry.loading) return "Checking…";
   if (entry.error === "cors_or_network") return "Unavailable";
+  if (entry.error === "upstream_fetch_failed") return "Unreachable";
   if (entry.ok) return "Operational";
   return "Down";
 }
@@ -22,10 +69,13 @@ export default function ServiceHealth({ checks }) {
       httpStatus: null,
       error: null,
       checkedAt: null,
+      apiSummary: null,
     }))
   );
 
   const probe = useCallback(async () => {
+    const viaGateway = Boolean(HEALTH_GATEWAY);
+
     setResults((prev) =>
       prev.map((r) => ({
         ...r,
@@ -33,6 +83,7 @@ export default function ServiceHealth({ checks }) {
         ok: false,
         httpStatus: null,
         error: null,
+        apiSummary: null,
       }))
     );
 
@@ -41,12 +92,68 @@ export default function ServiceHealth({ checks }) {
         const controller = new AbortController();
         const t = setTimeout(() => controller.abort(), HEALTH_TIMEOUT_MS);
         try {
-          const res = await fetch(c.url, {
+          const res = await fetch(probeUrl(c), {
             method: "GET",
             signal: controller.signal,
             cache: "no-store",
           });
           clearTimeout(t);
+          const rawBody = await res.text().catch(() => "");
+
+          if (viaGateway) {
+            let payload;
+            try {
+              payload = JSON.parse(rawBody);
+            } catch {
+              return {
+                id: c.id,
+                label: c.label,
+                url: c.url,
+                loading: false,
+                ok: false,
+                httpStatus: res.status,
+                error: res.ok ? "http" : "http",
+                checkedAt: Date.now(),
+                apiSummary: null,
+              };
+            }
+
+            if (payload.gatewayError === "upstream_fetch_failed") {
+              return {
+                id: c.id,
+                label: c.label,
+                url: c.url,
+                loading: false,
+                ok: false,
+                httpStatus:
+                  typeof payload.upstreamStatus === "number"
+                    ? payload.upstreamStatus
+                    : null,
+                error: "upstream_fetch_failed",
+                checkedAt: Date.now(),
+                apiSummary: null,
+              };
+            }
+
+            const httpStatus =
+              typeof payload.upstreamStatus === "number"
+                ? payload.upstreamStatus
+                : null;
+            const ok = Boolean(payload.upstreamOk);
+            const apiSummary = summarizeHealthBody(payload.bodyText ?? "");
+            return {
+              id: c.id,
+              label: c.label,
+              url: c.url,
+              loading: false,
+              ok,
+              httpStatus,
+              error: ok ? null : "http",
+              checkedAt: Date.now(),
+              apiSummary,
+            };
+          }
+
           const ok = res.ok;
           return {
             id: c.id,
@@ -57,6 +164,7 @@ export default function ServiceHealth({ checks }) {
             httpStatus: res.status,
             error: ok ? null : "http",
             checkedAt: Date.now(),
+            apiSummary: summarizeHealthBody(rawBody),
           };
         } catch (e) {
           clearTimeout(t);
@@ -70,6 +178,7 @@ export default function ServiceHealth({ checks }) {
             httpStatus: null,
             error: isAbort ? "timeout" : "cors_or_network",
             checkedAt: Date.now(),
+            apiSummary: null,
           };
         }
       })
@@ -138,6 +247,11 @@ export default function ServiceHealth({ checks }) {
                 </span>
               )}
             </p>
+            {row.apiSummary && (
+              <p className="mt-3 break-words font-mono text-[0.8125rem] leading-relaxed text-ink-subtle sm:text-body-sm">
+                {row.apiSummary}
+              </p>
+            )}
           </motion.li>
         ))}
       </ul>

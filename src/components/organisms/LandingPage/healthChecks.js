@@ -1,6 +1,7 @@
 /**
- * Health endpoints to monitor — add any number of `{ id, label, url }` entries.
- * Browser fetch may be blocked by CORS; unreachable / opaque failures show as unavailable.
+ * Canonical API health URLs (shown in UI). Actual fetch URL is chosen by ServiceHealth:
+ * - Local dev: same-origin `/preetham-portfolio/__health/{id}` (Vite proxies to APIs)
+ * - Production: direct fetch, or optional `VITE_HEALTH_GATEWAY` (see workers/portfolio-health-proxy.js)
  */
 const healthChecks = [
   {
