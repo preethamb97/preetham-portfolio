@@ -8,6 +8,11 @@ const healthChecks = [
     label: "Namma Rental API",
     url: "https://api.nammarental.com/health",
   },
+  {
+    id: "torquebill",
+    label: "Torquebill API",
+    url: "https://api.torquebill.com/api/health",
+  },
 ];
 
 export default healthChecks;
